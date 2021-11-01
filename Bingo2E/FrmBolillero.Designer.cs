@@ -30,6 +30,7 @@ namespace Bingo2E
         private void InitializeComponent()
         {
             this.btn_numero = new System.Windows.Forms.Button();
+            this.lb_salioNumero = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btn_numero
@@ -42,22 +43,34 @@ namespace Bingo2E
             this.btn_numero.UseVisualStyleBackColor = true;
             this.btn_numero.Click += new System.EventHandler(this.btn_numero_Click);
             // 
+            // lb_salioNumero
+            // 
+            this.lb_salioNumero.AutoSize = true;
+            this.lb_salioNumero.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lb_salioNumero.Location = new System.Drawing.Point(26, 126);
+            this.lb_salioNumero.Name = "lb_salioNumero";
+            this.lb_salioNumero.Size = new System.Drawing.Size(0, 50);
+            this.lb_salioNumero.TabIndex = 1;
+            // 
             // FrmBolillero
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(688, 263);
+            this.Controls.Add(this.lb_salioNumero);
             this.Controls.Add(this.btn_numero);
             this.Name = "FrmBolillero";
             this.Text = "Bolillero";
             this.Load += new System.EventHandler(this.FrmBolillero_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Button btn_numero;
+        private System.Windows.Forms.Label lb_salioNumero;
     }
 }
 

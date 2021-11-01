@@ -17,9 +17,8 @@ namespace Bingo2E
         string nombreJugador;
         List<int> numeros;
         Label[] lbls;
-        EnviarTxt avisarGane;
     
-        public FrmCarton(string nombJug,EnviarTxt avisar)
+        public FrmCarton(string nombJug)
         {
             cantidadNumerosPendientes = 15;
              
@@ -31,7 +30,6 @@ namespace Bingo2E
             NumerosRandom();
             CargarNumerosGrilla();
             
-            avisarGane = avisar;
 
             this.Text = nombJug;
             this.nombreJugador = nombJug;
@@ -98,8 +96,9 @@ namespace Bingo2E
             }
 
             if (cantidadNumerosPendientes == 0)
-                avisarGane.Invoke(nombreJugador);
-
+            {
+                MessageBox.Show("gane, soy "+ this.nombreJugador);
+            }
         }
 
     }
