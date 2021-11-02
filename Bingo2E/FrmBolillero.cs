@@ -10,13 +10,12 @@ using System.Windows.Forms;
 
 namespace Bingo2E
 {
-    public delegate void VerificarNumero(int num);
-    public delegate void EnviarTxt(string num);
+
     public partial class FrmBolillero : Form
     {
         static Random rnd;
-        List<int> numeros;
-        List<int> numerosSalidos;
+        List<int> numerosDisponibles;
+        List<int> numerosCantados;
         VerificarNumero delegadoSalioNumero;
         EnviarTxt delegadotexto;
 
@@ -24,28 +23,30 @@ namespace Bingo2E
         {
             InitializeComponent();
             rnd = new Random();
-            numeros = new List<int>();
-            numerosSalidos = new List<int>();
+            numerosDisponibles = new List<int>();
+            numerosCantados = new List<int>();
             SetearEstadoInicial();
         }
 
         private void SetearEstadoInicial()
         {
-            numerosSalidos.Clear();
+            numerosCantados.Clear();
+
             for (int i = 0; i < 100; i++)
             {
-                numeros.Add(i);
+                numerosDisponibles.Add(i);
             }
-        }
+        }                
 
         private int ObtenerNumero()
-        {
-            int numeroQueSalio = rnd.Next(0, numeros.Count);
+        {                                            //99
+            int numeroQueSalio = rnd.Next(0, numerosDisponibles.Count);
 
-            numeroQueSalio = numeros[numeroQueSalio];
+            numeroQueSalio = numerosDisponibles[numeroQueSalio];
             
-            numeros.Remove(numeroQueSalio);
-            numerosSalidos.Add(numeroQueSalio);
+            numerosDisponibles.Remove(numeroQueSalio);
+
+            numerosCantados.Add(numeroQueSalio);
 
             return numeroQueSalio;
         }
@@ -57,7 +58,7 @@ namespace Bingo2E
             delegadotexto.Invoke(numero.ToString());
         }
 
-        public void Ganador(string nombre)
+        public void CantarBingo(string nombre)
         {
             MessageBox.Show("Ganador!!! : " + nombre);
 
@@ -69,9 +70,9 @@ namespace Bingo2E
         private void FrmBolillero_Load(object sender, EventArgs e)
         {
 
-            FrmCarton c1 = new FrmCarton("pepe",  this.Ganador);
-            FrmCarton c2 = new FrmCarton("Juana", this.Ganador);
-            FrmCarton c3 = new FrmCarton("Caro",  this.Ganador);
+            FrmCarton c1 = new FrmCarton("pepe",  this.CantarBingo);
+            FrmCarton c2 = new FrmCarton("Juana", this.CantarBingo);
+            FrmCarton c3 = new FrmCarton("Caro",  this.CantarBingo);
 
 
             c1.Show();

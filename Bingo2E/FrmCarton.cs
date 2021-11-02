@@ -17,9 +17,10 @@ namespace Bingo2E
         string nombreJugador;
         List<int> numeros;
         Label[] lbls;
-        EnviarTxt avisarGane;
+       // EnviarTxt avisarGane;
+        Action<string> avisarGane;
     
-        public FrmCarton(string nombJug,EnviarTxt avisar)
+        public FrmCarton(string nombJug, Action<string> avisar)
         {
             cantidadNumerosPendientes = 15;
              
